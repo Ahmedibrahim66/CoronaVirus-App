@@ -22,20 +22,28 @@ Future<void> getdata() async {
       Map data = jsonDecode(response.body);
       //print(data);
       //get properties from data
+      print("helllllllllllo");
       Map summary = data['data'];
-      //print(summary);
+      print(summary);
 
       dataSummary = DataOne.fromJson(summary);
 
-      String lastUpdated = dataSummary.getLastUpdated;
+  String lastUpdated = dataSummary.getLastUpdated;
+
+    print(lastUpdated);
+
+
   int totalCases = dataSummary.getTotalCases;
   int totalRecovery= dataSummary.getTotalRecovery;
   int totalActiveCases = dataSummary.getTotalActiveCases;
   int totalDeath = dataSummary.getTotalDeath;
   int totalCriticalCases = dataSummary.getTotalCriticalCases;
   int totalTestedSamples = dataSummary.getTotalTestedSamples;
-  int homeQuarantine= dataSummary.getHomeQuarantine;
-  int centralQuarantine= dataSummary.getCentralQuarantine;
+  String homeQuarantine= dataSummary.getHomeQuarantine;
+  String centralQuarantine= dataSummary.getCentralQuarantine;
+  
+  print(lastUpdated);
+
 
     SharedPreferences.setMockInitialValues({}); // set initial values here if desired
 
@@ -47,8 +55,8 @@ Future<void> getdata() async {
     prefs.setInt('totalCriticalCases', totalCriticalCases);
     prefs.setInt('totalTestedSamples', totalTestedSamples);
     prefs.setInt('totalDeath', totalDeath);
-    prefs.setInt('homeQuarantine', homeQuarantine);
-    prefs.setInt('centralQuarantine', centralQuarantine);
+    prefs.setString('homeQuarantine', homeQuarantine);
+    prefs.setString('centralQuarantine', centralQuarantine);
 
 
       // String offset = data['utc_offset'];
@@ -88,8 +96,8 @@ class DataOne {
   int totalDeath;
   int totalCriticalCases;
   int totalTestedSamples;
-  int homeQuarantine;
-  int centralQuarantine;
+  String homeQuarantine;
+  String centralQuarantine;
 
  String get getLastUpdated => lastUpdated ;
  set setLastUpdated(String lastUpdated) => this.lastUpdated = lastUpdated;
@@ -118,13 +126,13 @@ class DataOne {
 
  set setTotalTestedSamples(int totalTestedSamples) => this.totalTestedSamples = totalTestedSamples;
 
- int get getHomeQuarantine => homeQuarantine;
+ String get getHomeQuarantine => homeQuarantine;
 
- set setHomeQuarantine(int homeQuarantine) => this.homeQuarantine = homeQuarantine;
+ set setHomeQuarantine(String homeQuarantine) => this.homeQuarantine = homeQuarantine;
 
- int get getCentralQuarantine => centralQuarantine;
+ String get getCentralQuarantine => centralQuarantine;
 
- set setCentralQuarantine(int centralQuarantine) => this.centralQuarantine = centralQuarantine;
+ set setCentralQuarantine(String centralQuarantine) => this.centralQuarantine = centralQuarantine;
 
 
   DataOne(
