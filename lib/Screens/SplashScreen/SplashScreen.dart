@@ -2,10 +2,12 @@ import 'dart:async';
 
 import 'package:coronavirusapp/NavigationDrawer/navigationDrawer.dart';
 import 'package:coronavirusapp/Services/api/summary.dart';
+import 'package:coronavirusapp/backgroundWork/background.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:background_fetch/background_fetch.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -27,6 +29,12 @@ class _SplashScreenState extends State<SplashScreen> {
 void initState() {
     super.initState();
      
+      backroundFetch();
+  
+    // If the widget was removed from the tree while the asynchronous platform
+    // message was in flight, we want to discard the reply rather than calling
+    // setState to update our non-existent appearance.
+
      instance.getdata();
 
      Timer _timer1 =
@@ -46,6 +54,7 @@ void initState() {
 
         startTime();
 
+    if (!mounted) return;
 
 
 }

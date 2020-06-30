@@ -25,14 +25,14 @@ Future<List> getnewCases() async {
       var datenow = formatter.format(now);
 
 
-      int newCases =0 ;
+      int newCases = 0 ;
       List<dynamic> cases = new List();
 
       for(int i =0 ; i<summary2.length ; i++)
       {
         if(datenow == summary2[i]["case_diagnose_date"])
         {newCases++;
-                cases.add(summary2[i]);
+        cases.add(summary2[i]);
 
         }
       }
